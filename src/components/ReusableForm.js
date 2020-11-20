@@ -23,7 +23,7 @@ function ReusableForm(props) {
               name='alcoholContent'
               defaultValue="0"
               min="0" /></p>
-            {props.buttonText === 'Edit Keg' &&
+            {props.formButtonText === 'Edit Keg' &&
             <p>Pints: <input
               type='number'
               name='pints'

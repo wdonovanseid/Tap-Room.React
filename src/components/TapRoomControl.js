@@ -69,7 +69,8 @@ class TapRoomControl extends React.Component {
     const newMasterKegList = this.state.masterKegList.filter(x => x.id !== id);
     this.setState({
       masterKegList: newMasterKegList,
-      selectedKeg: null
+      selectedKeg: null,
+      currentPage: 'kegList'
     });
   }
 
