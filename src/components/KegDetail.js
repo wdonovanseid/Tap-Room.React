@@ -8,7 +8,7 @@ function KegDetail(props) {
     <React.Fragment>
       <h2>{keg.name} Details</h2>
       <h3>Brand: {keg.brand}</h3>
-      <p>Price: ${keg.price.toFixed(2)}</p>
+      <p>Price: <span style={{color: "green"}}>${keg.price.toFixed(2)}</span></p>
       <p>Alcohol Content: {keg.alcoholContent}%</p>
       <p>Pints: {keg.pints > 9 ? keg.pints : keg.pints > 0 ? 'Almost Empty! '+keg.pints+' left!' : 'Out of Stock'}</p>
       {keg.pints > 0 &&
