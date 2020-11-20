@@ -1,4 +1,6 @@
 import React from 'react';
+import KegList from './KegList';
+import NewKegForm from './NewKegForm';
 
 class TapRoomControl extends React.Component {
   constructor(props){
