@@ -4,6 +4,7 @@ import NewKegForm from './NewKegForm';
 import KegDetail from './KegDetail';
 import EditKegForm from './EditKegForm';
 import './css/TapRoomControl.css';
+import Tab from './Tab';
 
 class TapRoomControl extends React.Component {
   constructor(props){
@@ -11,7 +12,8 @@ class TapRoomControl extends React.Component {
     this.state = {
       currentPage: "kegList",
       masterKegList: [],
-      selectedKeg: null
+      selectedKeg: null,
+      tabPintList: []
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -48,7 +50,21 @@ class TapRoomControl extends React.Component {
   handleBuyClick = (id) => {
     const selectedKeg = this.state.masterKegList.filter(x => x.id === id)[0];
     selectedKeg.pints -= 1;
-    this.setState({});
+    const pint = {...selectedKeg};
+    pint.quantity = 1;
+    const newPintList = this.state.tabPintList.concat(pint);
+    const temp = [];
+    newPintList.forEach((item) => {
+      if (temp.some(x => x.id === item.id)) {
+        const sameItem = temp.find(x => x.id === item.id)
+        sameItem.quantity += 1;
+      } else {
+        temp.push(item);
+      }
+    })
+    this.setState({
+      tabPintList: temp
+    });
   }
 
   handleEditClick = () => {
@@ -81,10 +97,41 @@ class TapRoomControl extends React.Component {
     this.setState({});
   }
 
+  handleCheckTab = () => {
+    this.setState({ currentPage: 'checkTab' });
+  }
+
+  handleCancelOrderClick = (id) => {
+    let checkItemQuan = this.state.tabPintList.filter(x => x.id === id)[0];
+    if (checkItemQuan.quantity > 1) {
+      checkItemQuan.quantity -= 1;
+    } else {
+      let newPintList;
+      if (this.state.tabPintList.length > 1) {
+        const index = this.state.tabPintList.findIndex(x => x.id === id);
+        const copyPint = [...this.state.tabPintList];
+        copyPint.splice(index, 1);
+        newPintList = copyPint;
+      } else {
+        newPintList = [];
+      }
+      this.setState({
+        tabPintList: newPintList
+      });
+    }
+    this.setState({});
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.currentPage === 'editKeg') {
+    if (this.state.currentPage === 'checkTab') {
+      currentlyVisibleState =
+        <Tab
+          pintList={this.state.tabPintList}
+          onClickingCancelOrder={this.handleCancelOrderClick} />
+      buttonText = "Return to Keg List";
+    } else if (this.state.currentPage === 'editKeg') {
       currentlyVisibleState =
         <EditKegForm
           keg={this.state.selectedKeg}
@@ -113,6 +160,7 @@ class TapRoomControl extends React.Component {
     }
     return (
       <React.Fragment>
+        <button type="button" className="btn btn-outline-success" onClick={this.handleCheckTab}>Check Tab</button>
         <div className="super">
           {currentlyVisibleState}
         </div>
