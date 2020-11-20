@@ -10,7 +10,8 @@ function EditKegForm(props) {
       brand: event.target.brand.value,
       price: parseFloat(event.target.price.value),
       alcoholContent: event.target.alcoholContent.value,
-      pints: parseInt(event.target.pints.value)
+      pints: parseInt(event.target.pints.value),
+      id: props.keg.id
     })
   }
   return (

@@ -20,7 +20,8 @@ function NewKegForm(props) {
       price: parseFloat(event.target.price.value),
       alcoholContent: event.target.alcoholContent.value,
       pints: 124,
-      id: v4() });
+      id: v4()
+    });
   }
 }
 
