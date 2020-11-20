@@ -6,15 +6,15 @@ class TapRoomControl extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      currentPage = 'kegList',
-      masterKegList = [],
-      selectedKeg = null
+      currentPage: "kegList",
+      masterKegList: [],
+      selectedKeg: null
     }
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = () => {
-    if (this.state.currentPage != 'kegList') {
+    if (this.state.currentPage !== 'kegList') {
       this.setState({
         currentPage: 'kegList',
       });
