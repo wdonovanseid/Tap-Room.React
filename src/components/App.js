@@ -5,7 +5,7 @@ function App() {
   return (
     <React.Fragment>
       <Header />
-      <StoreControl />
+      <TapRoomControl />
     </React.Fragment>
   );
 }
