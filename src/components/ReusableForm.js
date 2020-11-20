@@ -8,7 +8,9 @@ function ReusableForm(props) {
             <p>Name: <input
               type='text'
               name='name'
-              placeholder='Name' /></p>
+              // placeholder='Name'
+              defaultValue={props.keg.name}
+              required /></p>
             <p>Brand: <input
               name='brand'
               placeholder='Brand' /></p>

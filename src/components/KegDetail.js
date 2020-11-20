@@ -7,6 +7,7 @@ function KegDetail(props) {
   return (
     <React.Fragment>
       <h2>{keg.name} Details</h2>
+      <hr />
       <h3>Brand: {keg.brand}</h3>
       <p>Price: <span style={{color: "green"}}>${keg.price.toFixed(2)}</span></p>
       <p>Alcohol Content: {keg.alcoholContent}%</p>

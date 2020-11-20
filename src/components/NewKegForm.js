@@ -6,7 +6,8 @@ import ReusableForm from './ReusableForm';
 function NewKegForm(props) {
   return (
     <React.Fragment>
-      <h3>Add a new Keg</h3>
+      <h2>Add a new Keg</h2>
+      <hr />
       <ReusableForm
         formSubmissionHandler={handleNewKegFormSubmission}
         formButtonText="Add Keg" />
