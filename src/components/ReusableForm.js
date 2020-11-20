@@ -29,7 +29,7 @@ function ReusableForm(props) {
               name='pints'
               defaultValue="124"
               min="0" /></p>}
-          <button type="button" type='submit'>{props.buttonText}</button>
+          <button type="button" className="btn btn-primary" type='submit'>{props.formButtonText}</button>
         </form>
     </React.Fragment>
   );
@@ -37,7 +37,7 @@ function ReusableForm(props) {
 
 ReusableForm.propTypes = {
   formSubmissionHandler: PropTypes.func,
-  buttonText: PropTypes.string
+  formButtonText: PropTypes.string
 };
 
 export default ReusableForm;

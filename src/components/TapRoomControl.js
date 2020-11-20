@@ -112,7 +112,7 @@ class TapRoomControl extends React.Component {
     return (
       <React.Fragment>
           {currentlyVisibleState}
-          <button type="button" onClick={this.handleClick}>{buttonText}</button>
+          <button type="button" className="btn btn-outline-success" onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     );
   }

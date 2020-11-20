@@ -12,11 +12,11 @@ function KegDetail(props) {
       <p>Alcohol Content: {keg.alcoholContent}%</p>
       <p>Pints: {keg.pints > 9 ? keg.pints : keg.pints > 0 ? 'Almost Empty! '+keg.pints+' left!' : 'Out of Stock'}</p>
       {keg.pints > 0 &&
-        <button type="button" onClick={() => onClickingBuy(keg.id)}>Buy a Pint</button>
+        <button type="button" className="btn btn-danger" onClick={() => onClickingBuy(keg.id)}>Buy a Pint</button>
       }
-      <button type="button" onClick={props.onClickingEdit}>Update Keg</button>
-      <button type="button" onClick={() => onClickingDelete(keg.id)}>Delete Keg</button>
-      <button type="button" onClick={() => onClickingRestock(keg.id)}>Restock Keg</button>
+      <button type="button" className="btn btn-info" onClick={props.onClickingEdit}>Update Keg</button>
+      <button type="button" className="btn btn-primary" onClick={() => onClickingDelete(keg.id)}>Delete Keg</button>
+      <button type="button" className="btn btn-info" onClick={() => onClickingRestock(keg.id)}>Restock Keg</button>
     </React.Fragment>
   );
 
