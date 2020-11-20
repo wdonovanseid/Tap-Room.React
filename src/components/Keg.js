@@ -15,7 +15,7 @@ Keg.propTypes = {
   name: PropTypes.string,
   brand: PropTypes.string,
   price: PropTypes.number,
-  alcholContent: PropTypes.string,
+  alcholContent: PropTypes.number,
   pints: PropTypes.number,
   id: PropTypes.string,
 };
