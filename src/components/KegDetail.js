@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 function KegDetail(props) {
   const { keg, onClickingBuy, onClickingDelete, onClickingRestock } = props;
-
   return (
     <React.Fragment>
       <h2>{keg.name} Details</h2>
@@ -20,7 +19,6 @@ function KegDetail(props) {
       <button type="button" className="btn btn-info" onClick={() => onClickingRestock(keg.id)}>Restock Keg</button>
     </React.Fragment>
   );
-
 }
 
 KegDetail.propTypes = {
