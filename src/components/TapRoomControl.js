@@ -1,6 +1,7 @@
 import React from 'react';
 import KegList from './KegList';
 import NewKegForm from './NewKegForm';
+import KegDetail from './KegDetail';
 
 class TapRoomControl extends React.Component {
   constructor(props){
@@ -41,7 +42,12 @@ class TapRoomControl extends React.Component {
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.currentPage === 'newKeg') {
+    if (this.state.selectedKeg != null) {
+      currentlyVisibleState =
+        <KegDetail
+          keg={this.state.selectedKeg}/>
+      buttonText = "Return to Keg List";
+    } else if (this.state.currentPage === 'newKeg') {
       currentlyVisibleState =
         <NewKegForm
           onNewKegCreation={this.handleAddingNewKegToList} />
