@@ -29,7 +29,6 @@ class TapRoomControl extends React.Component {
   }
 
   handleAddingNewKegToList = (newKeg) => {
-    console.log("New"+newKeg.id)
     const newMasterKegList = this.state.masterKegList.concat(newKeg);
     this.setState({
       masterKegList: newMasterKegList,
@@ -56,7 +55,6 @@ class TapRoomControl extends React.Component {
   }
 
   handleEditingKegInList = (KegToEdit) => {
-    console.log("Edit"+KegToEdit.id)
     const editedMasterKegList = this.state.masterKegList
       .filter(x => x.id !== this.state.selectedKeg.id)
       .concat(KegToEdit);
@@ -68,7 +66,6 @@ class TapRoomControl extends React.Component {
   }
 
   handleDeletingKeg = (id) => {
-    console.log("Delete"+id)
     const newMasterKegList = this.state.masterKegList.filter(x => x.id !== id);
     this.setState({
       masterKegList: newMasterKegList,
