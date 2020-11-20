@@ -18,6 +18,7 @@ class TapRoomControl extends React.Component {
     if (this.state.currentPage !== 'kegList') {
       this.setState({
         currentPage: 'kegList',
+        selectedKeg: null
       });
     } else {
       this.setState({
