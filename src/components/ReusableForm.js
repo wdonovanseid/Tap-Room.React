@@ -2,34 +2,46 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function ReusableForm(props) {
+  let keg = [];
+  if (props.keg != null){
+    keg.push(props.keg.name);
+    keg.push(props.keg.brand);
+    keg.push(props.keg.price);
+    keg.push(props.keg.alcoholContent);
+    keg.push(props.keg.pints);
+  };
   return (
     <React.Fragment>
         <form onSubmit={props.formSubmissionHandler}>
             <p>Name: <input
               type='text'
               name='name'
-              // placeholder='Name'
-              defaultValue={props.keg.name}
+              placeholder='Name'
+              defaultValue={keg[0]}
               required /></p>
             <p>Brand: <input
               name='brand'
-              placeholder='Brand' /></p>
+              placeholder='Brand'
+              defaultValue={keg[1]}
+              required /></p>
             <p>Price: <input
               type='number'
               name='price'
-              defaultValue="0.00"
+              placeholder='0.00'
+              defaultValue={keg[2]}
               min="0"
               step="0.01" /></p>
             <p>Alcohol Content%: <input
               type='number'
               name='alcoholContent'
-              defaultValue="0"
+              placeholder='0'
+              defaultValue={keg[3]}
               min="0" /></p>
             {props.formButtonText === 'Edit Keg' &&
             <p>Pints: <input
               type='number'
               name='pints'
-              defaultValue="124"
+              defaultValue={keg[4]}
               min="0" /></p>}
           <button type="button" className="btn btn-primary" type='submit'>{props.formButtonText}</button>
         </form>
@@ -39,7 +51,8 @@ function ReusableForm(props) {
 
 ReusableForm.propTypes = {
   formSubmissionHandler: PropTypes.func,
-  formButtonText: PropTypes.string
+  formButtonText: PropTypes.string,
+  keg: PropTypes.object
 };
 
 export default ReusableForm;
