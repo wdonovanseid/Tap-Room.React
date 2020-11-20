@@ -36,7 +36,16 @@ class TapRoomControl extends React.Component {
 
   handleChangingSelectedKeg = (id) => {
     const selectedKeg = this.state.masterKegList.filter(x => x.id === id)[0];
-    this.setState({ selectedKeg: selectedKeg });
+    this.setState({
+      selectedKeg: selectedKeg,
+      currentPage: 'kegDetail'
+    });
+  }
+
+  handleBuyClick = (id) => {
+    const selectedKeg = this.state.masterKegList.filter(x => x.id === id)[0];
+    selectedKeg.pints -= 1;
+    this.setState({});
   }
 
   render() {
@@ -45,7 +54,8 @@ class TapRoomControl extends React.Component {
     if (this.state.selectedKeg != null) {
       currentlyVisibleState =
         <KegDetail
-          keg={this.state.selectedKeg}/>
+          keg={this.state.selectedKeg}
+          onClickingBuy={this.handleBuyClick} />
       buttonText = "Return to Keg List";
     } else if (this.state.currentPage === 'newKeg') {
       currentlyVisibleState =

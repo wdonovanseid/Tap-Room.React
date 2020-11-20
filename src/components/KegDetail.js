@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function KegDetail(props) {
-  const { keg } = props;
+  const { keg, onClickingBuy } = props;
 
   return (
     <React.Fragment>
@@ -11,6 +11,9 @@ function KegDetail(props) {
       <p>Price: ${keg.price.toFixed(2)}</p>
       <p>Alcohol Content: {keg.alcoholContent}%</p>
       <p>Pints: {keg.pints > 0 ? keg.pints : 'Out of Stock'}</p>
+      {keg.pints > 0 &&
+        <button type="button" onClick={() => onClickingBuy(keg.id)}>Buy a Pint</button>
+      }
     </React.Fragment >
   );
 
