@@ -2,6 +2,7 @@ import React from 'react';
 import KegList from './KegList';
 import NewKegForm from './NewKegForm';
 import KegDetail from './KegDetail';
+import EditKegForm from './EditKegForm';
 
 class TapRoomControl extends React.Component {
   constructor(props){
@@ -49,14 +50,36 @@ class TapRoomControl extends React.Component {
     this.setState({});
   }
 
+  handleEditClick = () => {
+    this.setState({ currentPage: 'editKeg' });
+  }
+
+  handleEditingKegInList = (KegToEdit) => {
+    const editedMasterKegList = this.state.masterKegList
+      .filter(x => x.id !== this.state.selectedKeg.id)
+      .concat(KegToEdit);
+    this.setState({
+      masterKegList: editedMasterKegList,
+      currentPage: 'kegList',
+      selectedKeg: null
+    });
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.selectedKeg != null) {
+    if (this.state.currentPage === 'editKeg') {
+      currentlyVisibleState =
+        <EditKegForm
+          keg={this.state.selectedKeg}
+          onEditKeg={this.handleEditingKegInList} />
+      buttonText = "Return to Keg List";
+    } else if (this.state.selectedKeg != null) {
       currentlyVisibleState =
         <KegDetail
           keg={this.state.selectedKeg}
-          onClickingBuy={this.handleBuyClick} />
+          onClickingBuy={this.handleBuyClick}
+          onClickingEdit={this.handleEditClick} />
       buttonText = "Return to Keg List";
     } else if (this.state.currentPage === 'newKeg') {
       currentlyVisibleState =

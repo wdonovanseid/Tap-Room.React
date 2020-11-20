@@ -14,6 +14,7 @@ function KegDetail(props) {
       {keg.pints > 0 &&
         <button type="button" onClick={() => onClickingBuy(keg.id)}>Buy a Pint</button>
       }
+      <button type="button" onClick={props.onClickingEdit}>Update Keg</button>
     </React.Fragment >
   );
 
