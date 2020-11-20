@@ -8,6 +8,10 @@
 
 _This is an Epicodus Friday Project in using React Fundamentals to create web application where a bar can track their kegs._
 
+## Component Diagram
+
+![Diagram image](./Tap-Room_Component_Diagram.png)
+
 ## Setup/Installation Requirements
 
 * _Clone Repository_

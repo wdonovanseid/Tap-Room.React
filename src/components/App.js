@@ -11,9 +11,7 @@ function App() {
     <React.Fragment>
       <Container>
         <Jumbotron>
-          <div className="jumbotron">
           <Header />
-          </div>
         </Jumbotron>
         <Card>
           <TapRoomControl />

@@ -3,6 +3,7 @@ import KegList from './KegList';
 import NewKegForm from './NewKegForm';
 import KegDetail from './KegDetail';
 import EditKegForm from './EditKegForm';
+import './css/TapRoomControl.css';
 
 class TapRoomControl extends React.Component {
   constructor(props){
@@ -112,7 +113,9 @@ class TapRoomControl extends React.Component {
     }
     return (
       <React.Fragment>
+        <div className="super">
           {currentlyVisibleState}
+          </div>
           <button type="button" className="btn btn-outline-success" onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     );

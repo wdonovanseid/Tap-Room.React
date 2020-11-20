@@ -30,19 +30,22 @@ function ReusableForm(props) {
               placeholder='0.00'
               defaultValue={keg[2]}
               min="0"
-              step="0.01" /></p>
+              step="0.01"
+              required /></p>
             <p>Alcohol Content%: <input
               type='number'
               name='alcoholContent'
               placeholder='0'
               defaultValue={keg[3]}
-              min="0" /></p>
+              min="0"
+              required /></p>
             {props.formButtonText === 'Edit Keg' &&
             <p>Pints: <input
               type='number'
               name='pints'
               defaultValue={keg[4]}
-              min="0" /></p>}
+              min="0"
+              required /></p>}
           <button type="button" className="btn btn-primary" type='submit'>{props.formButtonText}</button>
         </form>
     </React.Fragment>
