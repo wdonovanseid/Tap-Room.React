@@ -13,7 +13,8 @@ class TapRoomControl extends React.Component {
       currentPage: "kegList",
       masterKegList: [],
       selectedKeg: null,
-      tabPintList: []
+      tabPintList: [],
+      totalPrice: 0.00
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -63,7 +64,8 @@ class TapRoomControl extends React.Component {
       }
     })
     this.setState({
-      tabPintList: temp
+      tabPintList: temp,
+      totalPrice: this.state.totalPrice + pint.price
     });
   }
 
@@ -102,11 +104,11 @@ class TapRoomControl extends React.Component {
   }
 
   handleCancelOrderClick = (id) => {
-    let checkItemQuan = this.state.tabPintList.filter(x => x.id === id)[0];
-    if (checkItemQuan.quantity > 1) {
-      checkItemQuan.quantity -= 1;
+    const pint = this.state.tabPintList.filter(x => x.id === id)[0];
+    let newPintList = this.state.tabPintList;
+    if (pint.quantity > 1) {
+      pint.quantity -= 1;
     } else {
-      let newPintList;
       if (this.state.tabPintList.length > 1) {
         const index = this.state.tabPintList.findIndex(x => x.id === id);
         const copyPint = [...this.state.tabPintList];
@@ -115,11 +117,11 @@ class TapRoomControl extends React.Component {
       } else {
         newPintList = [];
       }
-      this.setState({
-        tabPintList: newPintList
-      });
     }
-    this.setState({});
+    this.setState({
+      tabPintList: newPintList,
+      totalPrice: this.state.totalPrice - pint.price
+    });
   }
 
   render() {
@@ -129,7 +131,8 @@ class TapRoomControl extends React.Component {
       currentlyVisibleState =
         <Tab
           pintList={this.state.tabPintList}
-          onClickingCancelOrder={this.handleCancelOrderClick} />
+          onClickingCancelOrder={this.handleCancelOrderClick}
+          totalTab={this.state.totalPrice} />
       buttonText = "Return to Keg List";
     } else if (this.state.currentPage === 'editKeg') {
       currentlyVisibleState =

@@ -4,10 +4,14 @@ import Pint from "./Pint";
 import { v4 } from 'uuid';
 
 function Tab(props) {
+  // let totalPrice = 0.00;
+  // props.pintList.map((x) => {
+  //   totalPrice += x.price;
+  // })
   return (
     <React.Fragment>
       <div className="card">
-        <h2>Your Tab</h2>
+        <h2>Your Tab - ${props.totalTab}</h2>
         <hr />
         <ul>
           {props.pintList.map((x) =>
@@ -15,6 +19,7 @@ function Tab(props) {
               whenCancelClicked={props.onClickingCancelOrder}
               name={x.name}
               quantity={x.quantity}
+              price={x.price}
               id={x.id}
               key={v4()} />
           )}
@@ -25,7 +30,8 @@ function Tab(props) {
 }
 
 Tab.propTypes = {
-  pintList: PropTypes.array
+  pintList: PropTypes.array,
+  totalTab: PropTypes.number
 };
 
 export default Tab;
